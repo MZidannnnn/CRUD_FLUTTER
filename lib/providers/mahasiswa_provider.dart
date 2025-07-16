@@ -7,13 +7,13 @@ class MahasiswaProvider with ChangeNotifier {
     // Data awal sebagai contoh
     Mahasiswa(
         id: '1',
-        nama: 'Budi Santoso',
-        nim: '11223344',
+        nama: 'Talas Bogor',
+        nim: 'C0302352',
         jurusan: 'Teknik Informatika'),
     Mahasiswa(
         id: '2',
-        nama: 'Ani Yudhoyono',
-        nim: '55667788',
+        nama: 'Beni',
+        nim: 'C0309242',
         jurusan: 'Sistem Informasi'),
   ];
 
