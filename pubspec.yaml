@@ -31,8 +31,11 @@ dependencies:
   flutter:
     sdk: flutter
     # Paket utama untuk Drift
+  flutter_localizations:
+    sdk: flutter
   drift: ^2.18.0
   provider: ^6.1.2
+  intl: ^0.19.0
   # TAMBAHKAN BARIS INI
   sqlite3: ^2.4.0 
   sqlite3_flutter_libs: ^0.5.22

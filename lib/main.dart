@@ -1,6 +1,8 @@
 // lib/main.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_localizations/flutter_localizations.dart'; // <-- 1. Tambah import ini
+
 
 import 'providers/mahasiswa_provider.dart';
 import 'screens/splash_screen.dart';
@@ -29,6 +31,19 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         debugShowCheckedModeBanner: false,
+
+                // 2. Tambahkan konfigurasi lokalisasi di sini
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('id', 'ID'), // Bahasa Indonesia
+          Locale('en', 'US'), // Bahasa Inggris sebagai fallback
+        ],
+
+
         // Rute awal aplikasi adalah splash screen
         initialRoute: '/',
         routes: {

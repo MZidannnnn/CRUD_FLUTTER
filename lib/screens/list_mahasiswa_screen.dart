@@ -32,8 +32,9 @@ class ListMahasiswaScreen extends StatelessWidget {
             style: TextButton.styleFrom(foregroundColor: Colors.red),
             child: const Text('Hapus Data'),
             onPressed: () {
+              // Mengirim 'mhs.nomor' sebagai kunci unik untuk menghapus
               Provider.of<MahasiswaProvider>(context, listen: false)
-                  .deleteMahasiswa(mhs.id);
+                  .deleteMahasiswa(mhs.nomor);
               Navigator.of(ctx).pop();
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Data berhasil dihapus!')),
@@ -69,7 +70,8 @@ class ListMahasiswaScreen extends StatelessWidget {
                 child: ListTile(
                   leading: CircleAvatar(child: Text(mhs.nama.substring(0, 1))),
                   title: Text(mhs.nama),
-                  subtitle: Text(mhs.nim),
+                  // Menampilkan 'nomor' sebagai subtitle
+                  subtitle: Text(mhs.nomor.toString()),
                   onTap: () => _showOptionsDialog(context, mhs),
                 ),
               );

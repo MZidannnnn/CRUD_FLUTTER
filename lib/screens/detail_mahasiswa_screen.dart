@@ -24,21 +24,43 @@ class DetailMahasiswaScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 ListTile(
+                  leading: const Icon(Icons.confirmation_number, color: Colors.indigo),
+                  title: const Text('Nomor',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  subtitle:
+                      Text(mhs.nomor.toString(), style: const TextStyle(fontSize: 16)),
+                ),
+                const Divider(),
+                ListTile(
                   leading: const Icon(Icons.person, color: Colors.indigo),
-                  title: const Text('Nama Lengkap', style: TextStyle(fontWeight: FontWeight.bold)),
-                  subtitle: Text(mhs.nama, style: const TextStyle(fontSize: 16)),
+                  title: const Text('Nama Lengkap',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  subtitle:
+                      Text(mhs.nama, style: const TextStyle(fontSize: 16)),
                 ),
                 const Divider(),
-                ListTile(
-                  leading: const Icon(Icons.numbers, color: Colors.indigo),
-                  title: const Text('NIM', style: TextStyle(fontWeight: FontWeight.bold)),
-                  subtitle: Text(mhs.nim, style: const TextStyle(fontSize: 16)),
+                 ListTile(
+                  leading: const Icon(Icons.calendar_today, color: Colors.indigo),
+                  title: const Text('Tanggal Lahir',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  subtitle:
+                      Text(mhs.tanggalLahir, style: const TextStyle(fontSize: 16)),
                 ),
                 const Divider(),
-                ListTile(
-                  leading: const Icon(Icons.school, color: Colors.indigo),
-                  title: const Text('Jurusan', style: TextStyle(fontWeight: FontWeight.bold)),
-                  subtitle: Text(mhs.jurusan, style: const TextStyle(fontSize: 16)),
+                 ListTile(
+                  leading: const Icon(Icons.wc, color: Colors.indigo),
+                  title: const Text('Jenis Kelamin',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  subtitle:
+                      Text(mhs.jenisKelamin, style: const TextStyle(fontSize: 16)),
+                ),
+                const Divider(),
+                 ListTile(
+                  leading: const Icon(Icons.home, color: Colors.indigo),
+                  title: const Text('Alamat',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  subtitle:
+                      Text(mhs.alamat, style: const TextStyle(fontSize: 16)),
                 ),
               ],
             ),

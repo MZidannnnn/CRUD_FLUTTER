@@ -4,36 +4,53 @@ import '../models/mahasiswa_model.dart';
 
 class MahasiswaProvider with ChangeNotifier {
   final List<Mahasiswa> _mahasiswa = [
-    // Data awal sebagai contoh
     Mahasiswa(
-        id: '1',
-        nama: 'Talas Bogor',
-        nim: 'C0302352',
-        jurusan: 'Teknik Informatika'),
+      nomor: 202501001, // Ubah menjadi integer (tanpa tanda kutip)
+      nama: 'Budi Hartono',
+      tanggalLahir: '15 Januari 2003',
+      jenisKelamin: 'Laki-laki',
+      alamat: 'Jl. Merdeka No. 10, Jakarta',
+    
+    ),
     Mahasiswa(
-        id: '2',
-        nama: 'Beni',
-        nim: 'C0309242',
-        jurusan: 'Sistem Informasi'),
+      nomor: 202501002, // Ubah menjadi integer (tanpa tanda kutip)
+      nama: 'Citra Lestari',
+      tanggalLahir: '22 Februari 2004',
+      jenisKelamin: 'Perempuan',
+      alamat: 'Jl. Pahlawan No. 5, Bandung',
+    
+    ),
   ];
 
   List<Mahasiswa> get mahasiswa => _mahasiswa;
 
-  void addMahasiswa(Mahasiswa mhs) {
-    _mahasiswa.add(mhs);
-    notifyListeners(); // Memberi tahu widget yang mendengarkan bahwa ada perubahan
-  }
-
-  void updateMahasiswa(Mahasiswa mhs) {
-    final index = _mahasiswa.indexWhere((item) => item.id == mhs.id);
-    if (index != -1) {
-      _mahasiswa[index] = mhs;
-      notifyListeners();
+  bool addMahasiswa(Mahasiswa mhs) {
+    if (_mahasiswa.any((item) => item.nomor == mhs.nomor)) {
+      return false;
     }
+    _mahasiswa.add(mhs);
+    notifyListeners();
+    return true;
   }
 
-  void deleteMahasiswa(String id) {
-    _mahasiswa.removeWhere((item) => item.id == id);
+  // Ubah parameter oldNomor menjadi int
+  bool updateMahasiswa(int oldNomor, Mahasiswa newMhs) {
+    final index = _mahasiswa.indexWhere((item) => item.nomor == oldNomor);
+    if (index != -1) {
+      final isNomorChanged = oldNomor != newMhs.nomor;
+      if (isNomorChanged && _mahasiswa.any((item) => item.nomor == newMhs.nomor)) {
+        return false;
+      }
+      _mahasiswa[index] = newMhs;
+      notifyListeners();
+      return true;
+    }
+    return false;
+  }
+
+  // Ubah parameter nomor menjadi int
+  void deleteMahasiswa(int nomor) {
+    _mahasiswa.removeWhere((item) => item.nomor == nomor);
     notifyListeners();
   }
 }

@@ -1,6 +1,14 @@
 // lib/screens/login_screen.dart
 import 'package:flutter/material.dart';
 
+
+class User {
+  final String email;
+  final String password;
+
+  User(this.email, this.password);
+}
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -13,12 +21,33 @@ class _LoginScreenState extends State<LoginScreen> {
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
+  
+  final List<User> _users = [
+    User('admin@gmail.com', '123'),
+    User('poliban', '0000'),
+  ];
+
+  
   void _login() {
     if (_formKey.currentState!.validate()) {
-      if (_emailController.text == 'admin@gmail.com' &&
-          _passwordController.text == '123') {
+      final inputEmail = _emailController.text;
+      final inputPassword = _passwordController.text;
+
+      bool loginSuccess = false;
+
+      // Loop melalui setiap user di dalam list
+      for (var user in _users) {
+        if (user.email == inputEmail && user.password == inputPassword) {
+          loginSuccess = true;
+          break; // Hentikan loop jika user yang cocok ditemukan
+        }
+      }
+
+      if (loginSuccess) {
+        // Jika berhasil, navigasi ke dashboard
         Navigator.pushReplacementNamed(context, '/dashboard');
       } else {
+        // Jika tidak ada user yang cocok, tampilkan pesan error
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Email atau password salah!'),

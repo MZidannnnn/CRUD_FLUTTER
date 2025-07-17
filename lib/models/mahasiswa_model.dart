@@ -1,14 +1,18 @@
 // lib/models/mahasiswa_model.dart
 class Mahasiswa {
-  String id;
+  int nomor; // Diubah dari String ke int
   String nama;
-  String nim;
-  String jurusan;
+  String tanggalLahir;
+  String jenisKelamin;
+  String alamat;
+ 
 
   Mahasiswa({
-    required this.id,
+    required this.nomor,
     required this.nama,
-    required this.nim,
-    required this.jurusan,
+    required this.tanggalLahir,
+    required this.jenisKelamin,
+    required this.alamat,
+    
   });
 }
