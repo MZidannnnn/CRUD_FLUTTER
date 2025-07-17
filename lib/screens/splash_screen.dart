@@ -23,22 +23,43 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.indigo,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.school, color: Colors.white, size: 100),
-            const SizedBox(height: 20),
-            const Text(
-              'Aplikasi Kampusku',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+      body: Stack( // Menggunakan Stack untuk menumpuk widget
+        fit: StackFit.expand,
+        children: [
+          // Konten utama tetap di tengah
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.school, color: Colors.white, size: 100),
+                const SizedBox(height: 20),
+                const Text(
+                  'Aplikasi Kampusku',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // Widget untuk watermark di bagian bawah
+          const Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 32.0),
+              child: Text(
+                'Created by Muhammad Zidan Helmy', // Ganti dengan nama Anda
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.white70,
+                ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

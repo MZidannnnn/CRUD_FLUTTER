@@ -28,6 +28,19 @@ class InformasiScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 16),
               ),
+              const Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 20.0),
+              child: Text(
+                'Created by Muhammad Zidan Helmy', // Ganti dengan nama Anda
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey,
+                ),
+              ),
+            ),
+          )
             ],
           ),
         ),

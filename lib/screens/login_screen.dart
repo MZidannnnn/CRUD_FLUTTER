@@ -62,51 +62,72 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Login')),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(Icons.lock, size: 80, color: Colors.indigo),
-              const SizedBox(height: 20),
-              TextFormField(
-                controller: _emailController,
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.email),
-                ),
-                validator: (value) =>
-                    value!.isEmpty ? 'Email tidak boleh kosong' : null,
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                controller: _passwordController,
-                obscureText: true,
-                decoration: const InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.key),
-                ),
-                validator: (value) =>
-                    value!.isEmpty ? 'Password tidak boleh kosong' : null,
-              ),
-              const SizedBox(height: 30),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: _login,
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
+      // Ubah body menjadi Stack untuk menumpuk widget
+      body: Stack(
+        children: [
+          // 1. Konten form yang sudah ada
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(Icons.lock, size: 80, color: Colors.indigo),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    controller: _emailController,
+                    decoration: const InputDecoration(
+                      labelText: 'Email',
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.email),
+                    ),
+                    validator: (value) =>
+                        value!.isEmpty ? 'Email tidak boleh kosong' : null,
                   ),
-                  child: const Text('Login'),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    controller: _passwordController,
+                    obscureText: true,
+                    decoration: const InputDecoration(
+                      labelText: 'Password',
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.key),
+                    ),
+                    validator: (value) =>
+                        value!.isEmpty ? 'Password tidak boleh kosong' : null,
+                  ),
+                  const SizedBox(height: 30),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: _login,
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                      ),
+                      child: const Text('Login'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          
+          // 2. Widget untuk watermark
+          const Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 20.0),
+              child: Text(
+                'Created by Muhammad Zidan Helmy', // Ganti dengan nama Anda
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey,
                 ),
               ),
-            ],
-          ),
-        ),
+            ),
+          )
+        ],
       ),
     );
   }

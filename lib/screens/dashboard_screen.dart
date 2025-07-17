@@ -5,7 +5,11 @@ class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
 
   Widget _buildMenuCard(
-      BuildContext context, IconData icon, String title, String routeName) {
+    BuildContext context,
+    IconData icon,
+    String title,
+    String routeName,
+  ) {
     return Card(
       elevation: 4,
       child: InkWell(
@@ -36,12 +40,24 @@ class DashboardScreen extends StatelessWidget {
           crossAxisSpacing: 16,
           mainAxisSpacing: 16,
           children: [
-            _buildMenuCard(context, Icons.list_alt, 'Lihat Data Mahasiswa',
-                '/list_mahasiswa'),
             _buildMenuCard(
-                context, Icons.add, 'Input Data Baru', '/form_mahasiswa'),
+              context,
+              Icons.list_alt,
+              'Lihat Data Mahasiswa',
+              '/list_mahasiswa',
+            ),
             _buildMenuCard(
-                context, Icons.info, 'Informasi Aplikasi', '/informasi'),
+              context,
+              Icons.add,
+              'Input Data Baru',
+              '/form_mahasiswa',
+            ),
+            _buildMenuCard(
+              context,
+              Icons.info,
+              'Informasi Aplikasi',
+              '/informasi',
+            ),
           ],
         ),
       ),

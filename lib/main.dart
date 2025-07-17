@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
           Locale('en', 'US'), // Bahasa Inggris sebagai fallback
         ],
 
+  
 
         // Rute awal aplikasi adalah splash screen
         initialRoute: '/',
@@ -55,7 +56,10 @@ class MyApp extends StatelessWidget {
           '/detail_mahasiswa': (context) => const DetailMahasiswaScreen(),
           '/informasi': (context) => const InformasiScreen(),
         },
+        
       ),
+      
     );
+    
   }
 }
